@@ -6,6 +6,10 @@ const searchPhone = () => {
     if (searchText == "") {
         alert("please input a Phone name");
     }
+    else if (searchText <= 0) {
+        alert("PLEASE INPUT POSITIVE NUMBER OR NAME");
+    }
+
 
     // clear value
     searchInput.value = '';
@@ -19,7 +23,7 @@ const searchPhone = () => {
 
 }
 const displayPhoneResult = phones => {
-    // console.log(phones);
+    console.log(phones);
     const phnSearchResult = document.getElementById('search-result');
     const firstTwenty = phones.slice(1, 21);
     phnSearchResult.innerHTML = '';
