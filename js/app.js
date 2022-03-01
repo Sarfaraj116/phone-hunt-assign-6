@@ -28,7 +28,7 @@ const displayPhoneResult = phones => {
                 <div class="card-body">
                     <h5 class="card-title">${phone.phone_name}</h5>
                     <p class="card-text">Brand: ${phone.brand}</p>
-                    <a onclick="loadPhoneDetail()" href="#" class="btn btn-primary">Detail</a>
+                    <a onclick="loadPhoneDetail('${phone.slug}')" href="#" class="btn btn-primary">Detail</a>
                 </div>
             </div>
     `;
@@ -37,9 +37,29 @@ const displayPhoneResult = phones => {
 }
 
 // single phone detail
-const loadPhoneDetail = phoneId => {
-    const url = ` https://openapi.programming-hero.com/api/phone/${phoneId}`;
+const loadPhoneDetail = (phoneId) => {
+    console.log(phoneId);
+    const url = `https://openapi.programming-hero.com/api/phone/${phoneId}
+
+    `;
     fetch(url)
         .then(res => res.json())
-        .then(data => console.log(data.data.slug))
+        .then(data => displayPhoneDetail(data.data))
+}
+const displayPhoneDetail = phone => {
+    console.log(phone);
+    const phoneDetail = document.getElementById('phone-details');
+    phoneDetail.innerHTML = '';
+    const div = document.createElement('div');
+    div.classList.add('card');
+    div.innerHTML = `
+    <img src="${phone.image}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${phone.name}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+            </div>
+    `;
+    phoneDetail.appendChild(div);
 }
