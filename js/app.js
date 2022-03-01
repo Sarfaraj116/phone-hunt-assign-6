@@ -6,6 +6,7 @@ const searchPhone = () => {
     // clear value
     searchInput.value = '';
 
+
     // load url
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
     fetch(url)
@@ -49,16 +50,23 @@ const loadPhoneDetail = (phoneId) => {
 const displayPhoneDetail = phone => {
     console.log(phone);
     const phoneDetail = document.getElementById('phone-details');
-    phoneDetail.innerHTML = '';
+    phoneDetail.textContent = '';
     const div = document.createElement('div');
     div.classList.add('card');
     div.innerHTML = `
     <img src="${phone.image}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${phone.name}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.</p>
+                <p class="card-text">${phone.releaseDate}</p>
+                <p class="card-text">STORAGE: ${phone.mainFeatures.storage},    DISPLAY SIZE: ${phone.mainFeatures.displaySize},  CHIPSET: ${phone.mainFeatures.chipSet}, MEMORY: ${phone.mainFeatures.memory}</p>
+                <p class="c000ard-text">Sensors:  ${phone.mainFeatures.sensors}</p>
+                <p class="c000ard-text">Bluetooth: ${phone.others.Bluetooth}</p>
+                <p class="c000ard-text">GPS: ${phone.others.GPS}</p>
+                <p class="c000ard-text">NFC: ${phone.others.NFC}</p>
+                <p class="c000ard-text">Radio: ${phone.others.Radio}</p>
+                <p class="c000ard-text">USB: ${phone.others.USB}</p>
+                <p class="c000ard-text">WLAN: ${phone.others.WLAN}</p>
+
             </div>
     `;
     phoneDetail.appendChild(div);
