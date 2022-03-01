@@ -1,7 +1,11 @@
+// search button connection with search field
 const searchPhone = () => {
     const searchInput = document.getElementById('search-input');
     const searchText = searchInput.value;
     // console.log(searchText);
+    if (searchText == "") {
+        alert("please input a Phone name");
+    }
 
     // clear value
     searchInput.value = '';
@@ -17,7 +21,7 @@ const searchPhone = () => {
 const displayPhoneResult = phones => {
     // console.log(phones);
     const phnSearchResult = document.getElementById('search-result');
-    const firstTwenty = phones.slice(0, 20);
+    const firstTwenty = phones.slice(1, 21);
     phnSearchResult.innerHTML = '';
     for (const phone of firstTwenty) {
         // console.log(phone);
@@ -40,9 +44,7 @@ const displayPhoneResult = phones => {
 // single phone detail
 const loadPhoneDetail = (phoneId) => {
     console.log(phoneId);
-    const url = `https://openapi.programming-hero.com/api/phone/${phoneId}
-
-    `;
+    const url = `https://openapi.programming-hero.com/api/phone/${phoneId} `;
     fetch(url)
         .then(res => res.json())
         .then(data => displayPhoneDetail(data.data))
