@@ -23,7 +23,7 @@ const searchPhone = () => {
 
 }
 const displayPhoneResult = phones => {
-    console.log(phones);
+    // console.log(phones);
     const phnSearchResult = document.getElementById('search-result');
     const firstTwenty = phones.slice(1, 21);
     phnSearchResult.innerHTML = '';
@@ -47,14 +47,14 @@ const displayPhoneResult = phones => {
 
 // single phone detail
 const loadPhoneDetail = (phoneId) => {
-    console.log(phoneId);
-    const url = `https://openapi.programming-hero.com/api/phone/${phoneId} `;
+    // console.log(phoneId);
+    const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
     fetch(url)
         .then(res => res.json())
         .then(data => displayPhoneDetail(data.data))
 }
 const displayPhoneDetail = phone => {
-    console.log(phone);
+    // console.log(phone);
     const phoneDetail = document.getElementById('phone-details');
     phoneDetail.textContent = '';
     const div = document.createElement('div');
